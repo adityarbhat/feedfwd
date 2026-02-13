@@ -90,6 +90,14 @@ Re-run the installer to pull the latest version:
 curl -sL https://raw.githubusercontent.com/adityarbhat/feedfwd/main/install.sh | bash
 ```
 
+### Uninstalling
+
+```bash
+curl -sL https://raw.githubusercontent.com/adityarbhat/feedfwd/main/install.sh | bash -s -- --uninstall
+```
+
+This removes commands, hooks, and plugin source. Your knowledge base at `~/.config/feedfwd/` is preserved.
+
 ### Accessing Your Knowledge Base
 
 Your knowledge cards live in `~/.config/feedfwd/` outside the plugin directory. To browse them from any project, create a symlink:
