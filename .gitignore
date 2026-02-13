@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+.python-version
+knowledge-base
+feedfwd-v0.1-spec.md
