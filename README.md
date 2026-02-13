@@ -44,71 +44,78 @@ No manual organization. No tagging. No remembering to apply what you learned. It
 
 ## Getting Started
 
-### 1. Clone the Plugin
+### One-Command Install
 
 ```bash
-git clone https://github.com/adityarbhat/feedfwd.git
-cd feedfwd
+curl -sL https://raw.githubusercontent.com/adityarbhat/feedfwd/main/install.sh | bash
 ```
 
-### 2. Install Python Dependencies
+This clones the plugin to `~/.claude/plugins/feedfwd`, installs Python dependencies, creates the knowledge base, and configures Claude Code — all in one step.
+
+Then start a new Claude Code session and try:
+
+```
+/learn https://example.com/great-article
+```
+
+**Works on Mac and Linux. Requires Python 3.11+ and Claude Code.**
+
+<details>
+<summary><strong>Manual Installation</strong></summary>
+
+If you prefer to install manually:
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate   # On Windows: .venv\Scripts\activate
+# 1. Clone the plugin
+git clone https://github.com/adityarbhat/feedfwd.git ~/.claude/plugins/feedfwd
+
+# 2. Install Python dependencies
 pip install httpx beautifulsoup4 python-frontmatter tiktoken
-```
 
-### 3. Load the Plugin in Claude Code
-
-```bash
-# Option A: Load for a single session (from inside the cloned repo)
-claude --plugin-dir .
-
-# Option B: Load permanently — add to ~/.claude/settings.json:
+# 3. Add to Claude Code — add this to ~/.claude/settings.json:
 ```
 
 ```json
 {
-  "pluginDirs": ["/absolute/path/to/feedfwd"]
+  "pluginDirs": ["~/.claude/plugins/feedfwd"]
 }
 ```
 
-Replace `/absolute/path/to/feedfwd` with the actual path where you cloned the repo (e.g. `~/projects/feedfwd`).
-
-### 4. Verify Installation
-
-Start a Claude Code session and run:
-
-```
-/learn
+```bash
+# 4. Create the knowledge base directories
+mkdir -p ~/.config/feedfwd/knowledge/{prompting,python,workflow,tools,testing,architecture,debugging}
 ```
 
-If you see the learn command prompt, you're good to go.
+</details>
 
-### 5. Initialize the Knowledge Base (Automatic)
+<details>
+<summary><strong>Development Installation</strong></summary>
 
-The knowledge base is created automatically at `~/.config/feedfwd/` the first time you use `/learn`. No manual setup needed.
-
-To browse your knowledge cards from any project, create a symlink:
+Clone the repository and load it directly for testing:
 
 ```bash
-# From your project root
+git clone https://github.com/adityarbhat/feedfwd.git
+cd feedfwd
+pip install httpx beautifulsoup4 python-frontmatter tiktoken
+claude --plugin-dir .
+```
+
+</details>
+
+### Updating
+
+Re-run the installer to pull the latest version:
+
+```bash
+curl -sL https://raw.githubusercontent.com/adityarbhat/feedfwd/main/install.sh | bash
+```
+
+### Accessing Your Knowledge Base
+
+Your knowledge cards live in `~/.config/feedfwd/` outside the plugin directory. To browse them from any project, create a symlink:
+
+```bash
 ln -s ~/.config/feedfwd knowledge-base
-```
-
-This gives you direct access:
-
-```
-knowledge-base/
-├── knowledge/
-│   ├── prompting/
-│   ├── python/
-│   ├── workflow/
-│   ├── tools/
-│   └── ...
-├── _index.json
-└── _session_log.json
 ```
 
 The symlink is in `.gitignore` — it won't be committed to your repo.
