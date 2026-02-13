@@ -62,13 +62,19 @@ pip install httpx beautifulsoup4 python-frontmatter tiktoken
 ### 3. Load the Plugin in Claude Code
 
 ```bash
-# Option A: Load for a single session (good for trying it out)
-claude --plugin-dir /path/to/feedfwd
+# Option A: Load for a single session (from inside the cloned repo)
+claude --plugin-dir .
 
-# Option B: Load permanently via settings
-# Add to ~/.claude/settings.json under "pluginDirs":
-# "pluginDirs": ["/path/to/feedfwd"]
+# Option B: Load permanently — add to ~/.claude/settings.json:
 ```
+
+```json
+{
+  "pluginDirs": ["/absolute/path/to/feedfwd"]
+}
+```
+
+Replace `/absolute/path/to/feedfwd` with the actual path where you cloned the repo (e.g. `~/projects/feedfwd`).
 
 ### 4. Verify Installation
 
