@@ -40,6 +40,16 @@ You read something useful, run `/learn`, and FeedFwd distills it into a concise 
 
 No manual organization. No tagging. No remembering to apply what you learned. It just works.
 
+### "Why not just use CLAUDE.md?"
+
+You could — and you should. But CLAUDE.md and FeedFwd solve different problems.
+
+CLAUDE.md is a static file you manually maintain for one project. It loads everything every session regardless of relevance. FeedFwd is global across all your projects, auto-distilled from URLs, and only injects the 2-3 most relevant cards per session (max 400 tokens).
+
+More importantly: **you don't actually update your CLAUDE.md with new learnings.** You read an article, think "I should add this to my CLAUDE.md," and never do. FeedFwd is for the 90% of things you read but never get around to integrating.
+
+Think of CLAUDE.md as the permanent rulebook. FeedFwd is the intake system — how new knowledge gets tested. When a card proves its value through real usage, that's when you graduate it to CLAUDE.md as a permanent rule.
+
 ---
 
 ## Getting Started
