@@ -50,9 +50,15 @@ No manual organization. No tagging. No remembering to apply what you learned. It
 curl -sL https://raw.githubusercontent.com/adityarbhat/feedfwd/main/install.sh | bash
 ```
 
-This clones the plugin to `~/.claude/plugins/feedfwd`, installs Python dependencies, creates the knowledge base, and configures Claude Code — all in one step.
+This does everything in one step:
 
-Then start a new Claude Code session and try:
+1. Clones the plugin to `~/.claude/plugins/feedfwd/`
+2. Installs Python dependencies (`httpx`, `beautifulsoup4`, `python-frontmatter`, `tiktoken`)
+3. Copies `/learn` and `/knowledge` commands to `~/.claude/commands/`
+4. Adds SessionStart and Stop hooks to `~/.claude/settings.json`
+5. Creates the knowledge base at `~/.config/feedfwd/knowledge/`
+
+Then start a **new** Claude Code session and try:
 
 ```
 /learn https://example.com/great-article
@@ -61,37 +67,9 @@ Then start a new Claude Code session and try:
 **Works on Mac and Linux. Requires Python 3.11+ and Claude Code.**
 
 <details>
-<summary><strong>Manual Installation</strong></summary>
-
-If you prefer to install manually:
-
-```bash
-# 1. Clone the plugin
-git clone https://github.com/adityarbhat/feedfwd.git ~/.claude/plugins/feedfwd
-
-# 2. Install Python dependencies
-pip install httpx beautifulsoup4 python-frontmatter tiktoken
-
-# 3. Add to Claude Code — add this to ~/.claude/settings.json:
-```
-
-```json
-{
-  "pluginDirs": ["~/.claude/plugins/feedfwd"]
-}
-```
-
-```bash
-# 4. Create the knowledge base directories
-mkdir -p ~/.config/feedfwd/knowledge/{prompting,python,workflow,tools,testing,architecture,debugging}
-```
-
-</details>
-
-<details>
 <summary><strong>Development Installation</strong></summary>
 
-Clone the repository and load it directly for testing:
+For contributing or testing changes locally, use `--plugin-dir` to load the plugin directly:
 
 ```bash
 git clone https://github.com/adityarbhat/feedfwd.git
@@ -99,6 +77,8 @@ cd feedfwd
 pip install httpx beautifulsoup4 python-frontmatter tiktoken
 claude --plugin-dir .
 ```
+
+This loads the plugin for a single session without modifying your Claude Code settings.
 
 </details>
 
