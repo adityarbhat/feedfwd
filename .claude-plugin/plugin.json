@@ -1,0 +1,10 @@
+{
+  "name": "feedfwd",
+  "description": "Turn what you read into how you code. Captures articles, techniques, and insights, then automatically injects relevant knowledge into your Claude Code sessions.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Adi"
+  },
+  "repository": "https://github.com/feedfwd/feedfwd",
+  "license": "MIT"
+}

@@ -1,0 +1,14 @@
+{
+  "hooks": [
+    {
+      "event": "SessionStart",
+      "command": "python $PLUGIN_DIR/scripts/inject.py \"$PROJECT_DIR\"",
+      "timeout": 5000
+    },
+    {
+      "event": "Stop",
+      "command": "python $PLUGIN_DIR/scripts/feedback.py \"$PROJECT_DIR\"",
+      "timeout": 10000
+    }
+  ]
+}
