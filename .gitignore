@@ -3,5 +3,17 @@ __pycache__/
 .venv/
 .DS_Store
 .python-version
+
+# Knowledge base (user-specific, lives in ~/.config/feedfwd/)
 knowledge-base
+knowledge-base/
+_index.json
+_session_log.json
+
+# Spec and internal docs
 feedfwd-v0.1-spec.md
+*.spec.md
+
+# Environment and secrets
+.env
+.env.*
