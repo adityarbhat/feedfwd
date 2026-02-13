@@ -12,10 +12,10 @@
 <br>
 
 ```
-/learn https://example.com/great-article
+/learn <url> | <screenshot> | <pasted text>
 ```
 
-**That's it. One command. Knowledge captured forever.**
+**One command. Any input. Knowledge captured forever.**
 
 <br>
 
@@ -115,13 +115,20 @@ FeedFwd operates on a simple loop that runs in the background of every Claude Co
 
 ### 1. Capture
 
-```
+Feed knowledge in any format you want:
+
+```bash
+# From a URL
 /learn https://simonwillison.net/2025/Feb/thinking-patterns/
+
+# From multiple URLs at once
+/learn https://url1.com https://url2.com https://url3.com
+
+# Paste text or drop a screenshot — just run /learn with no args
+/learn
 ```
 
-You find a useful article. You run `/learn`. Done.
-
-The distiller subagent reads the article, extracts the **one core actionable technique**, and writes it as a knowledge card — a direct instruction to Claude, not a summary.
+The distiller subagent reads your input, extracts the **one core actionable technique**, and writes it as a knowledge card — a direct instruction to Claude, not a summary.
 
 ```
 ✅ Learned: thinking-patterns → prompting/thinking-patterns.md
@@ -183,9 +190,10 @@ Low performers (consider removing):
 
 | Command | What it does |
 |---------|--------------|
-| `/learn <url>` | Distill an article into a knowledge card |
+| `/learn <url>` | Fetch and distill an article into a knowledge card |
 | `/learn <url1> <url2> ...` | Batch learn from multiple URLs |
-| `/learn` | Paste text or screenshot directly |
+| `/learn` (then paste text) | Distill from pasted text |
+| `/learn` (then drop screenshot) | Distill from a screenshot |
 
 ### Knowledge Management
 
